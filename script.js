@@ -19,7 +19,8 @@ const iconBt = document.querySelector(".app__card-primary-butto-icon");
 let tempoDecorridoEmSegundos = 1500;
 let intervaloId = null; 
 
-musica.loop = true 
+musica.loop = true;
+musica.currentTime = 8;
 
 musicaFocoInput.addEventListener('change', () => {
     if (musica.paused) {
