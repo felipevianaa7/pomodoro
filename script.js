@@ -7,9 +7,9 @@ const titulo = document.querySelector('.app__title');
 const botoes = document.querySelectorAll('.app__card-button');
 const musicaFocoInput = document.querySelector('#alternar-musica');
 const musica = new Audio('./sons/snowfall.mp3');
-const playMusica = new Audio('/sons/play.wav');
-const pauseMusica = new Audio('/sons/pause.mp3');
-const beepMusica = new Audio('/sons/beep.mp3');
+const playMusica = new Audio('./sons/play.wav');
+const pauseMusica = new Audio('./sons/pause.mp3');
+const beepMusica = new Audio('./sons/beep.mp3');
 const tempoNaTela = document.querySelector('#timer');
 const startPauseBt = document.querySelector('#start-pause');
 const resetBt = document.querySelector('#reset');
@@ -17,10 +17,9 @@ const scanTag = document.querySelector('span');
 const iconBt = document.querySelector(".app__card-primary-butto-icon");
 
 let tempoDecorridoEmSegundos = 1500;
-let intervaloId = null; //é usada para acompanhar se 
-//o temporizador está em execução ou pausado
+let intervaloId = null; 
 
-musica.loop = true //musica tocando sem parar
+musica.loop = true 
 
 musicaFocoInput.addEventListener('change', () => {
     if (musica.paused) {
@@ -54,7 +53,7 @@ function alterarContexto(contexto) {
         contexto.classList.remove('active');
     });
     html.setAttribute('data-contexto', contexto);
-    imagem.setAttribute('src', `/imagens/${contexto}.png`);
+    imagem.setAttribute('src', `./imagens/${contexto}.png`);
     switch (contexto) {
         case "foco":
             titulo.innerHTML = `
@@ -80,7 +79,7 @@ const contagemRegressiva = () => {
         beepMusica.play();
         zerar();
         alert('Tempo finalizado!');
-        return; // o return evita que fique dando o alerta e termine a execução
+        return; 
     }
     tempoDecorridoEmSegundos -= 1;
     mostrarTempo();
@@ -115,19 +114,19 @@ function iniciarOuPausar() {
     if (intervaloId) {
         pauseMusica.play();
         zerar();
-        return; //para interromper e pausar a contagem
+        return; 
     }
     playMusica.play();
     intervaloId = setInterval(contagemRegressiva, 1000);
     scanTag.innerHTML = "Pausar";
-    iconBt.setAttribute('src', `/imagens/pause.png`);
+    iconBt.setAttribute('src', `./imagens/pause.png`);
 
 }
 
 function zerar() {
     clearInterval(intervaloId);
     scanTag.innerHTML = "Começar";
-    iconBt.setAttribute('src', `/imagens/play_arrow.png`);
+    iconBt.setAttribute('src', `./imagens/play_arrow.png`);
     intervaloId = null;
 }
 
